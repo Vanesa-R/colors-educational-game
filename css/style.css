@@ -1,0 +1,217 @@
+@font-face {
+    font-family: 'fontTitle';
+    src: url("/fonts/fontTitle.ttf");
+}
+
+@font-face {
+    font-family: 'Baloo2';
+    src: url("/fonts/Baloo2.ttf");
+}
+
+
+/* Layout*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 1em;
+    font-family: 'Baloo2';
+    font-size: 16px;
+    background-color: rgb(214, 236, 250);
+}
+
+.header {
+    position: relative;
+}
+
+.title {
+    font-family: "fontTitle";
+    font-size: 3.5em;
+    font-weight: 100;
+    text-align: center;
+    background: linear-gradient(30deg, #f7f74d 0%, #208b3a 35%, #9952e0 65%, #f26419 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 1024px) {
+    .title {
+        font-size: 4.5em;
+    }
+}
+
+/* Control sonido */
+
+.volume {
+    position: absolute;
+    right: 1em;
+    top: 2em;
+    display: flex;
+    padding: .15em;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    outline: .15em solid lightskyblue;
+    border: .15em solid lightblue;
+    border-radius: 50%;
+}
+
+.volume__on, .volume__off {
+    display: none;
+    cursor: pointer;
+}
+
+.volume__on.--active,
+.volume__off.--active {
+    display: flex;
+
+}
+
+.volume img {
+    width: 2.2em;
+}
+.main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3em;
+    width: 100%;
+}
+
+
+
+
+/* Título y solicitud de color*/
+
+
+h2 {
+    font-size: 1.3em;
+}
+
+.color {
+    text-transform: uppercase;
+}
+
+
+
+/* Cards del juego*/
+
+.container__cards {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin-top: 2em;
+    border-radius: .5em;
+}
+
+@media (min-width: 768px) {
+    .container__cards {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container__cards {
+        width: 50%;
+    }
+}
+
+.flip-card {
+    width: 50%;
+    height: 30vh;
+    perspective: 1000px;
+    background-color: transparent;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: 600ms ease transform;
+    transform-style: preserve-3d;
+}
+
+.flip-card.--ok .card {
+    transform: rotateY(-180deg);
+}
+
+.flip-card.--error {
+    animation: error 300ms;
+}
+
+
+.option__color,
+.option__color__result {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: .1em solid lightskyblue;
+    cursor: pointer;
+    border-radius: .5em;
+}
+
+
+
+.option__color__result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(-180deg);
+}
+
+
+.option__color__result p {
+    animation: fontSize ease-in-out 2s;
+}
+
+.option__color__result p::first-letter{
+   text-transform: uppercase;
+}
+
+
+
+
+
+@keyframes fontSize {
+    0% {
+       font-size: 0;
+
+    } 25% {
+        font-size: 1.3em;
+
+    } 50% {
+        font-size: 1em;
+
+    } 75% {
+        font-size: 1.4em;
+
+    } 100% {
+        font-size: .8em;
+    }
+}
+
+@keyframes error {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(1deg);
+    }
+    50% {
+        transform: rotate(-1deg);
+    } 75% {
+        transform: rotate(1deg);
+    } 100% {
+        transform: rotate(0deg);
+    }
+}
