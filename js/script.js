@@ -234,7 +234,7 @@ const checkColor = () => {
 
                 if (volume.classList.contains("--active")){
                 
-                    let sound = new Audio("/assets/correct.mp3");
+                    let sound = new Audio("/assets/sounds/correct.mp3");
                     sound.play();
 
                 }
@@ -281,7 +281,7 @@ const checkColor = () => {
 
                 if (volume.classList.contains("--active")){
                 
-                    let sound = new Audio("/assets/incorrect.mp3");
+                    let sound = new Audio("/assets/sounds/incorrect.mp3");
                     sound.play();
                     sound.volume = 0.5;
 
