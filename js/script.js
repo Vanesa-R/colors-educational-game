@@ -12,6 +12,9 @@ const colors = ["blanco", "amarillo", "rosa", "rojo", "naranja", "verde", "azul"
 let randomNumbers = [];
 let randomColors = [];
 
+let counter = 0;
+let result;
+
 
 // Eventos
 
@@ -60,7 +63,6 @@ const generateColors = () => {
   
 }
 generateColors();
-
 
 
 
@@ -129,7 +131,7 @@ generateSearchColor();
 
 
 
-// Pintar los elementos con las opciones
+// Pintar las cards con las opciones
 
 const printColors = () => {
 
@@ -182,8 +184,37 @@ printColors();
 
 
 
+// Pintar el mensaje en la card
 
-// Elección correcta e incorrecta
+const printMessage = () => {
+
+
+    switch(counter) {
+        case 1:
+            result = `¡¡Bien!!`;
+            break;
+        case 2:
+            result = `¡Muy bien!`;
+            break;
+        case 3:
+            result = `¡Genial!`;
+            break;
+        case 4:
+            result = `¡Sigue así!`;
+            break;
+
+        default:
+            result = `¡Has acertado!`
+            break;
+
+    }
+
+}
+
+
+
+
+// Comprobar si la opción seleccionada es correcta o incorrecta
 
 const checkColor = () => {
 
@@ -192,11 +223,14 @@ const checkColor = () => {
         option.addEventListener("click", (e) => {
 
 
-           // Pintar la respuesta ok
+           // Pintar la respuesta si has elegido correctamente
 
             const flipCard = option.parentElement.parentElement;
 
             if (option.dataset.color === selectColor.textContent){
+
+                counter++;
+                printMessage();
 
                 if (volume.classList.contains("--active")){
                 
@@ -214,8 +248,8 @@ const checkColor = () => {
                 flipCard.classList.add("--ok");                      
                 div.classList.add("option__color__result")
                 paragraph.classList.add("option__text");
-
-                paragraph.textContent = `¡Muy bien!`;
+                            
+                paragraph.textContent = `${result}`;                
                 
                 if ((option.style.backgroundColor === "white") || (option.style.backgroundColor === "yellow")){
                     paragraph.style.color = "black";
@@ -241,6 +275,8 @@ const checkColor = () => {
             
             } else {
 
+                counter = 0;
+
                 flipCard.classList.add("--error");
 
                 if (volume.classList.contains("--active")){
@@ -260,6 +296,8 @@ const checkColor = () => {
     })
 }
 checkColor();
+
+
 
 
 // Volumen
