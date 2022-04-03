@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'fontTitle';
-    src: url("/assets/fonts/fontTitle.ttf");
+    src: url("../assets/fonts/fontTitle.ttf");
 }
 
 @font-face {
     font-family: 'Baloo2';
-    src: url("/assets/fonts/Baloo2.ttf");
+    src: url("../assets/fonts/Baloo2.ttf");
 }
 
 
